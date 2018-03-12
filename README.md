@@ -96,9 +96,9 @@ Licensed under the [MIT](https://github.com/Phreshhh/Phreshistant/blob/master/LI
 
 ## Web
 
-(Phresh-IT)[http://phresh-it.hu/]
+[Phresh-IT](http://phresh-it.hu/)
 
-(Phreshistant)[http://phresh-it.hu/apps/phreshistant/]
+[Phreshistant](http://phresh-it.hu/apps/phreshistant/)
 
 
 ## Dev

@@ -398,11 +398,11 @@ function editorMakeText(textOperation)  {
       jumpNum = 2;
       break;
     case 'link':
-      newText = todoNoteInput.value.substring(0, selStart) + '(Link text)[' + sel + ']' + todoNoteInput.value.substring(selEnd);
+      newText = todoNoteInput.value.substring(0, selStart) + '[Link text](' + sel + ')' + todoNoteInput.value.substring(selEnd);
       (sel === '') ? jumpNum = 10 : jumpNum = 10 - sel.length;
       break;
     case 'img':
-      newText = todoNoteInput.value.substring(0, selStart) + '!(Alt title)[' + sel + ']' + todoNoteInput.value.substring(selEnd);
+      newText = todoNoteInput.value.substring(0, selStart) + '![Alt title](' + sel + ')' + todoNoteInput.value.substring(selEnd);
       (sel === '') ? jumpNum = 11 : jumpNum = 11 - sel.length;
       break;
     case 'code':
