@@ -1,0 +1,24 @@
+hr {margin:2px;padding:0;}
+.w3-ul li {padding:0;}
+.fa {width:20px;text-align:center;}
+
+#resizer {margin-top:35px;}
+
+.hidden {display:none;}
+.clickable {cursor:pointer;}
+.clickable:hover {color:var(--appcolor);}
+
+#projectLoader, #todoLoader {position:sticky;top:calc(45% - 15px);left:calc(50% - 15px);}
+#projectView {overflow-y:auto;overflow-x:hidden;}
+#projectList {list-style-type:none;padding:0;width:100%;}
+.projectstateselectorspan {position:absolute;top:4px;right:0;}
+
+#todoView {overflow-y:auto;overflow-x:hidden;}
+#todoView .w3-bar button {border-radius:10px 10px 0px 0px;}
+.todoshowhidedescbutton {white-space:inherit;padding-right:250px;}
+.todocounterspan {padding:0 5px 0 0;margin-left:5px;}
+.todopriorityspan {position:absolute;top:8px;right:10px;padding:0;width:100px;}
+.todopriorityspan i {margin-top:3px;}
+.todostateselectorspan {position:absolute;top:8px;right:110px;}
+
+.modalinputfield {width:80%;margin:0 auto;}

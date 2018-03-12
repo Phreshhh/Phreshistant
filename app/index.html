@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Phreshistant</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="../build/icons/phreshistant-icon.png.ico" />
+    <link rel="stylesheet" href="assets/font-awesome-4.7/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="assets/css/w3.css" />
+    <link rel="stylesheet" href="assets/css/chrome.custom.scrollbar.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link id="themecss" rel="stylesheet" href="assets/css/themes/theme-light.css" />
+  </head>
+  <body>
+
+    <!-- Navbar -->
+    <div class="w3-top w3-cear">
+      <div id="mainNav" class="w3-bar w3-theme-d2 w3-left-align">
+        <a id="openNav" class="w3-bar-item w3-button w3-button-app w3-hide-medium w3-hide-large w3-right w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
+        <a href="#" class="w3-bar-item w3-button w3-button-app" onclick="todosJS.getTodos(0);"><i class="fa fa-home w3-margin-right"></i>Home</a>
+        <div class="w3-dropdown-hover w3-dropdown-app-hover w3-hide-small">
+          <button class="w3-button w3-button-app">Reminders <i class="fa fa-caret-down"></i></button>     
+          <div class="w3-dropdown-content w3-animate-opacity w3-card-4 w3-bar-block">
+            <a href="#" class="w3-bar-item w3-button w3-button-app" onclick="showRemindersBlock();">Reminders list</a>
+            <a href="#" class="w3-bar-item w3-button w3-button-app" onclick="document.getElementById('createReminderModal').style.display='block';">New reminder</a>
+          </div>
+        </div>
+        <div class="w3-dropdown-hover w3-dropdown-app-hover w3-hide-small">
+          <button class="w3-button w3-button-app">Theme <i class="fa fa-caret-down"></i></button>     
+          <div class="w3-dropdown-content w3-animate-opacity w3-card-4 w3-bar-block">
+            <a href="#" class="w3-bar-item w3-button w3-button-app" onclick="changeTheme('light');">Light</a>
+            <a href="#" class="w3-bar-item w3-button w3-button-app" onclick="changeTheme('dark');">Dark</a>
+            <a href="#" class="w3-bar-item w3-button w3-button-app" onclick="changeTheme('coffee');">Coffee</a>
+          </div>
+        </div>
+        <div class="w3-dropdown-hover w3-dropdown-app-hover w3-hide-small">
+          <button class="w3-button w3-button-app">Settings <i class="fa fa-caret-down"></i></button>     
+          <div class="w3-dropdown-content w3-animate-opacity w3-card-4 w3-bar-block">
+            <a href="#" class="w3-bar-item w3-button w3-button-app" onclick="showResizer();">Resize views</a>
+            <a href="#" class="w3-bar-item w3-button w3-button-app" onclick="showModal('editWorkspaceModal', 'newWorkspacePathInput');">Save folder</a>
+            <a href="#" class="w3-bar-item w3-button w3-button-app" onclick="importDB();">Import database</a>
+            <a href="#" class="w3-bar-item w3-button w3-button-app" onclick="exportDB();">Export database</a>
+          </div>
+        </div>
+        <div class="w3-dropdown-hover w3-dropdown-app-hover w3-hide-small">
+          <button class="w3-button w3-button-app">About <i class="fa fa-caret-down"></i></button>     
+          <div class="w3-dropdown-content w3-animate-opacity w3-card-4 w3-bar-block">
+            <a id="phreshistant" href="#" class="w3-bar-item w3-button w3-button-app" onclick="openExternallink('app');">Phreshistant</a>
+            <a id="phresh-it" href="#" class="w3-bar-item w3-button w3-button-app" onclick="openExternallink('phreshit');">Phresh-IT</a>
+            <a id="electronjs" href="#" class="w3-bar-item w3-button w3-button-app" onclick="openExternallink('electron');">Electron</a>
+          </div>
+        </div>
+        <a href="#" class="w3-bar-item w3-button w3-button-transparent w3-round w3-hide-small" style="cursor:default;">&nbsp;</a>
+        <a id="dateTimeHolder" href="#" class="w3-bar-item w3-button w3-button-app w3-round active w3-hide-small" style="cursor:default;">&nbsp;</a>
+        <a id="search" href="#" class="w3-bar-item w3-button w3-button-app w3-hide-small w3-right" onclick="showSearchBlock();"><i class="fa fa-search"></i></a>
+        <div id="searchBlock" class="w3-bar-item w3-button w3-button-transparent w3-hide-small w3-right" style="visibility:hidden;">
+          <input id="searchInput" class="w3-input w3-animate-input w3-round" style="width:50%;margin:0 auto;padding:0 5px;box-shadow:5px 5px 50px;" type="text" onkeyup="filterTodos(this.value);" placeholder="Search">
+          <a href="#" class="w3-button w3-button-transparent" onclick="hideSearchBlock();" style="position:absolute;top:0;right:60px;">&times;</a>
+        </div>
+      </div>
+
+      <!-- Navbar on small screens -->
+      <div id="collapsedNav" class="w3-bar-block w3-theme-d2 w3-hide w3-hide-large w3-hide-medium w3-white">
+        <div class="w3-dropdown-hover w3-dropdown-app-hover">
+          <button class="w3-button w3-button-app">Reminders <i class="fa fa-caret-down"></i></button>     
+          <div class="w3-dropdown-content w3-card-4 w3-bar-block">
+            <a href="#" class="w3-bar-item w3-button w3-button-app" onclick="showRemindersBlock();">Reminders list</a>
+            <a href="#" class="w3-bar-item w3-button w3-button-app" onclick="document.getElementById('createReminderModal').style.display='block';">New reminder</a>
+          </div>
+        </div>
+        <div class="w3-dropdown-hover w3-dropdown-app-hover">
+          <button class="w3-button w3-button-app">Theme <i class="fa fa-caret-down"></i></button>     
+          <div class="w3-dropdown-content w3-animate-opacity w3-card-4 w3-bar-block">
+            <a href="#" class="w3-bar-item w3-button w3-button-app" onclick="changeTheme('light');">Light</a>
+            <a href="#" class="w3-bar-item w3-button w3-button-app" onclick="changeTheme('dark');">Dark</a>
+            <a href="#" class="w3-bar-item w3-button w3-button-app" onclick="changeTheme('coffee');">Coffee</a>
+          </div>
+        </div>
+        <div class="w3-dropdown-hover w3-dropdown-app-hover">
+          <button class="w3-button w3-button-app">Settings <i class="fa fa-caret-down"></i></button>     
+          <div class="w3-dropdown-content w3-card-4 w3-bar-block">
+            <a href="#" class="w3-bar-item w3-button w3-button-app" onclick="showResizer();">Resize views</a>
+            <a href="#" class="w3-bar-item w3-button w3-button-app" onclick="showModal('editWorkspaceModal', 'newWorkspacePathInput');">Save folder</a>
+          </div>
+        </div>
+        <div class="w3-dropdown-hover w3-dropdown-app-hover">
+          <button class="w3-button w3-button-app">About <i class="fa fa-caret-down"></i></button>     
+          <div class="w3-dropdown-content w3-card-4 w3-bar-block">
+              <a id="phreshistant-cn" href="#" class="w3-bar-item w3-button w3-button-app" onclick="openExternallink('app');">Phreshistant</a>
+              <a id="phresh-it-cn" href="#" class="w3-bar-item w3-button w3-button-app" onclick="openExternallink('phreshit');">Phresh-IT</a>
+              <a id="electronjs-cn" href="#" class="w3-bar-item w3-button w3-button-app" onclick="openExternallink('electron');">Electron</a>
+          </div>
+        </div>
+        <a id="search-cn" href="#" class="w3-bar-item w3-button w3-button-app" onclick="showSearchBlockCN();">Search</a>
+        <div id="searchBlock-cn" class="w3-bar-item w3-button w3-button-transparent" style="visibility:hidden;">
+          <input id="searchInput-cn" class="w3-input w3-animate-input w3-round" style="width:50%;margin:0 auto;padding:0 5px;box-shadow:5px 5px 50px;" type="text" onkeyup="filterTodos(this.value);" placeholder="Search">
+          <a href="#" class="w3-button w3-button-transparent" onclick="hideSearchBlockCN();" style="position:relative;top:-32px;left:93%;">&times;</a>
+        </div>
+      </div>
+    </div>
+
+    <input id="resizer" type="range" value="30" min="0" max="100" style="width:100%;display:none;" oninput="resizeViews(this.value)" onchange="saveViews(this.value);">
+    
+    <div id="projectView" class="w3-left">
+      <h4 class="w3-left"> Projects <i class="fa fa-plus w3-large clickable" onclick="showModal('createProjectModal', 'projectNameInput')"></i> </h4>
+      <ul id="projectList" class="w3-left"></ul>
+    </div>
+
+    <div id="todoView" class="w3-left">
+
+      <div class="w3-bar w3-border-bottom">
+        <button id="TodoAllButton" class="w3-bar-item w3-button tablink w3-button-app active" onclick="listTodosByState('TodoAll');">All</button>
+        <button id="TodoProcessingButton" class="w3-bar-item w3-button tablink w3-hover-blue" onclick="listTodosByState('TodoProcessing');">Processing</button>
+        <button id="TodoTestingButton" class="w3-bar-item w3-button tablink w3-hover-orange" onclick="listTodosByState('TodoTesting');">Testing</button>
+        <button id="TodoIdleButton" class="w3-bar-item w3-button tablink w3-hover-amber" onclick="listTodosByState('TodoIdle');">Idle</button>
+        <button id="TodoFinishedButton" class="w3-bar-item w3-button tablink w3-hover-green" onclick="listTodosByState('TodoFinished');">Finished</button>
+        <button id="newTodoButton" class="w3-bar-item w3-button w3-button-highlight tablink" onclick="showModal('createTodoModal', 'todoInput');"><i class="fa fa-plus"></i></button>
+        <button id="TodoSearchedButton" class="w3-bar-item w3-button w3-button-highlight tablink" onclick="listTodosByState('TodoSearched');" style="display:none;color:#fff;">Results</button>
+        <button id="RemindersButton" class="w3-bar-item w3-button w3-button-highlight highlight tablink" onclick="listTodosByState('Reminders');" style="display:none;color:#fff;">Reminders <a href="#" onclick="hideRemindersBlock();" style="margin-left:5px;text-decoration:none;"> &times; </a></button>
+      </div>
+
+      <div id="TodoAll" class="todotab w3-animate-zoom">
+        <ul id="todoAllList" class="w3-ul w3-small"></ul>
+      </div>
+
+      <div id="TodoProcessing" class="todotab w3-animate-zoom hidden">
+        <ul id="todoProcessingList" class="w3-ul w3-small"></ul>
+      </div>
+
+      <div id="TodoTesting" class="todotab w3-animate-zoom hidden">
+        <ul id="todoTestingList" class="w3-ul w3-small"></ul>
+      </div>
+
+      <div id="TodoIdle" class="todotab w3-animate-zoom hidden">
+        <ul id="todoIdleList" class="w3-ul w3-small"></ul>
+      </div>
+
+      <div id="TodoFinished" class="todotab w3-animate-zoom hidden">
+        <ul id="todoFinishedList" class="w3-ul w3-small"></ul>
+      </div>
+
+      <div id="TodoSearched" class="todotab w3-animate-zoom hidden">
+        <ul id="todoSearchedList" class="w3-ul w3-small"></ul>
+      </div>
+
+      <div id="Reminders" class="todotab w3-animate-zoom hidden">
+        <ul id="remindersList" class="w3-ul w3-small"></ul>
+      </div>
+
+    </div>
+
+    <!-- Modals -->
+    <div id="createWorkspaceModal" class="w3-modal">
+      <div class="w3-modal-content w3-animate-top">
+        <input id="workspacePathInput" class="w3-input w3-animate-input w3-round modalinputfield" type="text" onclick="createWorkspaceDialog();">
+      </div>
+    </div>
+
+    <div id="editWorkspaceModal" class="w3-modal">
+      <div class="w3-modal-content w3-animate-top">
+        <input id="newWorkspacePathInput" class="w3-input w3-animate-input w3-round modalinputfield" type="text" onclick="editWorkspaceDialog();">
+      </div>
+    </div>
+
+    <div id="createProjectModal" class="w3-modal">
+      <div class="w3-modal-content w3-animate-top">
+        <input id="projectNameInput" class="w3-input w3-animate-input w3-round modalinputfield" type="text" onkeyup="projectsJS.saveProjectListener(event, this.value);" placeholder="New project">
+      </div>
+    </div>
+
+    <div id="createTodoModal" class="w3-modal">
+      <div class="w3-modal-content w3-animate-top">
+        <input id="todoInput" class="w3-input w3-animate-input w3-round modalinputfield" type="text" onkeyup="todosJS.saveTodoListener(event, this.value);">
+      </div>
+    </div>
+
+    <div id="editTodoNoteModal" class="w3-modal">
+      <div class="w3-modal-content w3-animate-top" style="max-height:90%;overflow-y:auto;">
+
+        <div id="editorNav" class="w3-bar" style="padding-left:140px;">
+          <a id="e-b" href="#" class="w3-bar-item w3-button" onclick="todosJS.editorMakeText('bold');" title="Bold"><i class="fa fa-bold"></i></a>
+          <a id="e-i" href="#" class="w3-bar-item w3-button" onclick="todosJS.editorMakeText('italic');" title="Italic"><i class="fa fa-italic"></i></a>
+          <a id="e-h" href="#" class="w3-bar-item w3-button" onclick="todosJS.editorMakeText('header');" title="Header"><i class="fa fa-header"></i></a>
+          <a id="e-bq" href="#" class="w3-bar-item w3-button" onclick="todosJS.editorMakeText('blockquote');" title="Blockquote"><i class="fa fa-quote-right"></i></a>
+          <a id="e-a" href="#" class="w3-bar-item w3-button" onclick="todosJS.editorMakeText('link');" title="Link"><i class="fa fa-link"></i></a>
+          <a id="e-img" href="#" class="w3-bar-item w3-button" onclick="todosJS.editorMakeText('img');" title="Picture"><i class="fa fa-picture-o"></i></a>
+          <a id="e-pre" href="#" class="w3-bar-item w3-button" onclick="todosJS.editorMakeText('code');" title="Code"><i class="fa fa-code"></i></a>
+          <a id="e-ol" href="#" class="w3-bar-item w3-button" onclick="todosJS.editorMakeText('ol');" title="List OL"><i class="fa fa-list-ol"></i></a>
+          <a id="e-ul" href="#" class="w3-bar-item w3-button" onclick="todosJS.editorMakeText('ul');" title="List UL"><i class="fa fa-list-ul"></i></a>
+          <a id="e-cblist" href="#" class="w3-bar-item w3-button" onclick="todosJS.editorMakeText('cblist');" title="Checkbox list"><i class="fa fa-check-square-o"></i></a>
+          <a id="e-hr" href="#" class="w3-bar-item w3-button" onclick="todosJS.editorMakeText('hr');" title="Horizontal Rule HR"><i class="fa fa-minus"></i></a>
+          <a id="e-table" href="#" class="w3-bar-item w3-button" onclick="todosJS.editorMakeText('table');" title="Table"><i class="fa fa-table"></i></a>
+          <a id="e-save" href="#" class="w3-bar-item w3-button w3-round w3-right" onclick="todosJS.saveTodoNote();" title="Save"><i class="fa fa-save"></i></a>
+        </div>
+        <textarea id="todoNoteInput" class="w3-input w3-animate-input w3-round" style="width:50%;margin:0 auto;box-shadow:5px 5px 50px;" rows="25"></textarea>
+
+      </div>
+    </div>
+
+    <div id="createReminderModal" class="w3-modal">
+      <div class="w3-modal-content w3-animate-top w3-round" style="max-height:90%;overflow-y:auto;background:rgba(0,0,0,0.55);padding:10px;">
+
+        <div class="w3-row-padding w3-panel">
+          <div class="w3-col m2 w3-center">
+            <select id="newReminderYear" class="w3-select w3-round"></select>
+          </div>
+          <div class="w3-col m2 w3-center">
+            <select id="newReminderMonth" class="w3-select w3-round"></select>
+          </div>
+          <div class="w3-col m2 w3-center">
+            <select id="newReminderDay" class="w3-select w3-round"></select>
+          </div>
+          <div class="w3-col m2 w3-center">
+            &nbsp;
+          </div>
+          <div class="w3-col m2 w3-center">
+            <select id="newReminderHour" class="w3-select w3-round"></select>
+          </div>
+          <div class="w3-col m2 w3-center">
+            <select id="newReminderMinute" class="w3-select w3-round"></select>
+          </div>
+        </div>
+
+        <div class="w3-row-padding w3-panel">
+          <textarea id="newReminderTextInput" class="w3-input w3-animate-input w3-round" rows="5" placeholder="Reminder text"></textarea>
+        </div>
+
+        <div class="w3-row-padding w3-panel w3-round w3-white">
+          <div class="w3-col m2" style="margin-bottom:5px;">
+            <input id="newReminderOnce" class="w3-radio clickable newremindertypecheck" type="radio" name="newReminderType" value="Once" onchange="document.getElementById('newReminderPeriod').style.display='none';" checked>
+            <label for="newReminderOnce" style="cursor:pointer;">Once</label>
+          </div>
+          <div class="w3-col m2" style="margin-bottom:5px;">
+            <input id="newReminderPeriodic" class="w3-radio clickable newremindertypecheck" type="radio" name="newReminderType" value="Periodic" onchange="document.getElementById('newReminderPeriod').style.display='block';">
+            <label for="newReminderPeriodic" style="cursor:pointer;">Periodic</label>
+            <input id="newReminderPeriod" type="number" min="5" max="600" placeholder="Minutes" style="display:none;">
+          </div>
+          <div class="w3-col m2" style="margin-bottom:5px;">
+            <input id="newReminderDialy" class="w3-radio clickable newremindertypecheck" type="radio" name="newReminderType" value="Dialy" onchange="document.getElementById('newReminderPeriod').style.display='none';">
+            <label for="newReminderDialy" style="cursor:pointer;">Dialy</label>
+          </div>
+          <div class="w3-col m2" style="margin-bottom:5px;">
+            <input id="newReminderWeekly" class="w3-radio clickable newremindertypecheck" type="radio" name="newReminderType" value="Weekly" onchange="document.getElementById('newReminderPeriod').style.display='none';">
+            <label for="newReminderWeekly" style="cursor:pointer;">Weekly</label>
+          </div>
+          <div class="w3-col m2" style="margin-bottom:5px;">
+            <input id="newReminderMonthly" class="w3-radio clickable newremindertypecheck" type="radio" name="newReminderType" value="Monthly" onchange="document.getElementById('newReminderPeriod').style.display='none';">
+            <label for="newReminderMonthly" style="cursor:pointer;">Monthly</label>
+          </div>
+          <div class="w3-col m2" style="margin-bottom:5px;">
+            <input id="newReminderYearly" class="w3-radio clickable newremindertypecheck" type="radio" name="newReminderType" value="Yearly" onchange="document.getElementById('newReminderPeriod').style.display='none';">
+            <label for="newReminderYearly" style="cursor:pointer;">Yearly</label>
+          </div>
+        </div>
+
+        <div class="w3-row-padding w3-panel w3-round w3-white">
+
+          <div class="w3-col m3 w3-center">
+            <input id="newReminderInAlert" class="w3-check" type="checkbox" value="alert">
+            <label for="newReminderInAlert" style="cursor:pointer;">Alert</label>
+          </div>
+          <div class="w3-col m3 w3-center">
+            <input id="newReminderInModal" class="w3-check" type="checkbox" value="modal" checked>
+            <label for="newReminderInModal" style="cursor:pointer;">Modal</label>
+          </div>
+          <div class="w3-col m3 w3-center">
+            <input id="newReminderGetFocus" class="w3-check" type="checkbox" value="focus" checked>
+            <label for="newReminderGetFocus" style="cursor:pointer;">Focus window</label>
+          </div>
+          <div class="w3-col m3 w3-center">
+            <input id="newReminderSetTaskToIdle" class="w3-check" type="checkbox" value="settasktoidle" onchange="(this.checked) ? document.getElementById('addTaskToReminderPanel').style.display = 'block' : document.getElementById('addTaskToReminderPanel').style.display = 'none';">
+            <label for="newReminderSetTaskToIdle" style="cursor:pointer;">(re)Set todo to Idle</label>
+          </div>
+
+          <div class="w3-col m12 w3-center">
+            &nbsp;
+          </div>
+
+          <div id="addTaskToReminderPanel" class="w3-panel" style="display:none;">
+
+            <div class="w3-col m4 w3-center">
+              <select id="newReminderProjectSelect" class="w3-select" style="border-bottom:none;" onchange="remindersJS.getTodosToRemindersSelect(this.value);"></select>
+            </div>
+            <div class="w3-col m4 w3-center">
+              <select id="newReminderTodoSelect" class="w3-select" style="border-bottom:none;"></select>
+            </div>
+            <div class="w3-col m4 w3-center">
+              <button id="addTaskToReminder" class="w3-btn w3-right w3-green w3-round" onclick="remindersJS.addTodoToReminder();">Add</button>
+            </div>
+
+            <div class="w3-col m12 w3-center">
+              <ul id="newReminderTodoAddedList" class="w3-ul w3-small"></ul>
+            </div>
+            
+          </div>
+
+        </div>
+
+        <p>
+          <button class="w3-btn w3-green w3-right w3-round" onclick="remindersJS.saveReminder();">Save reminder</button>
+        </p>
+
+      </div>
+    </div>
+
+    <div id="reminderModal" class="w3-modal">
+      <div class="w3-modal-content">
+        <header class="w3-container w3-red"> 
+          <span class="w3-button w3-display-topright" onclick="document.getElementById('reminderModal').style.display='none';" >&times;</span>
+          <h2>Reminder</h2>
+        </header>
+        <div class="w3-container w3-white">
+          <p id="reminderTextP"></p>
+        </div>
+        <footer class="w3-container w3-red">
+          <p id="reminderTimeP"></p>
+        </footer>
+      </div>
+    </div>
+
+    <script src="assets/js/w3.js"></script>
+    <script>
+
+      let autosaveInterval = null;
+      let countUpIntervals = [];
+
+      setInterval( () => {
+        /* Clock */
+        let datetimeTotitle = dateTimeFormat(new Date());
+        document.getElementById('dateTimeHolder').innerHTML = datetimeTotitle;
+        /* Running & Testing todos time */
+        todoCountUps();
+        /* Reminders */
+        checkReminders();
+      }, 1000);
+
+      function openNav() {
+          let collapsedNav = document.getElementById("collapsedNav");
+          if (collapsedNav.className.indexOf("w3-show") == -1) {
+            collapsedNav.className += " w3-show";
+          } else { 
+            collapsedNav.className = collapsedNav.className.replace(" w3-show", "");
+          }
+      }
+      
+      function openExternallink(gotohomepage) {
+        switch (gotohomepage) {
+          case 'app':
+            require('electron').shell.openExternal('http://phresh-it.hu/apps/phreshistant/');
+            break;
+          case 'phreshit':
+            require('electron').shell.openExternal('http://phresh-it.hu/');
+            break;
+          case 'electron':
+            require('electron').shell.openExternal('https://electronjs.org/');
+            break;
+        }
+      }
+
+      function listTodosByState(todotabName) {
+        let i, todotab, tablinks;
+        todotab = document.getElementsByClassName("todotab");
+        tablinks = document.getElementsByClassName("tablink");
+        for (i = 0; i < todotab.length; i++) {
+
+          w3.addStyle('#' + todotab[i].id, 'display', 'none');
+          w3.removeClass('#' + tablinks[i].id, 'active w3-amber w3-blue w3-orange w3-green w3-red highlight');
+
+        }
+        switch (todotabName) {
+          case "TodoAll":
+            w3.addClass('#TodoAllButton', 'active');
+            w3.show('#TodoAll');
+            break;
+          case "TodoProcessing":
+            w3.addClass('#TodoProcessingButton', 'w3-blue');
+            w3.show('#TodoProcessing');
+            break;
+          case "TodoTesting":
+            w3.addClass('#TodoTestingButton', 'w3-orange');
+            w3.show('#TodoTesting');
+            break;
+          case "TodoIdle":
+            w3.addClass('#TodoIdleButton', 'w3-amber');
+            w3.show('#TodoIdle');
+            break;
+          case "TodoFinished":
+            w3.addClass('#TodoFinishedButton', 'w3-green');
+            w3.show('#TodoFinished');
+            break;
+          case "TodoSearched":
+            w3.addClass('#TodoSearchedButton', 'highlight');
+            w3.show('#TodoSearched');
+            break;
+          case "Reminders":
+            w3.addClass('#RemindersButton', 'highlight');
+            w3.show('#Reminders');
+            break;
+        }
+      }
+
+      function toggleShowTodoNote(id) {
+
+        let todonote = document.getElementById(id);
+
+        if (todonote !== null) {
+
+          if (todonote.className.indexOf("w3-show") == -1) {
+            todonote.className += " w3-show";
+            currTodoId = parseInt(id.split('-')[2]);
+            store.set('activity.currTodoId', currTodoId);
+          } else {
+            todonote.className = todonote.className.replace(" w3-show", "");
+          }
+
+          setActiveTodo();
+
+        }
+
+      }
+
+      function formatWorkTime(date_from, date_to) {
+
+        let delta = Math.abs(date_from - date_to) / 1000;
+
+        let years = Math.floor(delta / 31536000);
+        delta -= years * 31536000;
+
+        let days = Math.floor(delta / 86400);
+        delta -= days * 86400;
+
+        let hours = Math.floor(delta / 3600) % 24;
+        delta -= hours * 3600;
+
+        let minutes = Math.floor(delta / 60) % 60;
+        delta -= minutes * 60;
+
+        let seconds = Math.floor(delta % 60);
+
+        let workedTime = '';
+
+        if (years !== 0) {
+          workedTime = years + "y, " + days + "d, " + ('0' + hours).slice(-2) + ":" + ('0' + minutes).slice(-2) + ":" + ('0' + seconds).slice(-2);
+        } else {
+          if (days !== 0) {
+            workedTime = days + "d, " + ('0' + hours).slice(-2) + ":" + ('0' + minutes).slice(-2) + ":" + ('0' + seconds).slice(-2);
+          } else {
+            workedTime = ('0' + hours).slice(-2) + ":" + ('0' + minutes).slice(-2) + ":" + ('0' + seconds).slice(-2);
+          }
+        }
+
+        return workedTime;
+      }
+
+      function dateTimeFormat(datetime) {
+        let newDatetime = datetime.toLocaleString();
+        newDatetime = newDatetime.replace('. ', '.');
+        newDatetime = newDatetime.replace('. ', '.');
+        newDatetime = newDatetime.replace('. ', ' - ');
+        return newDatetime;
+      }
+
+      function todoCountUps() {
+        
+        for (let c = 0; c < countUpIntervals.length; c++) {
+
+          let todoIntervalParts = countUpIntervals[c].split('_');
+          let todoId = parseInt(todoIntervalParts[0]);
+          let todoWorkingtime = parseInt(todoIntervalParts[1]);
+          let todoCounterAll = document.getElementById('todocounterspan-' + todoId + '-inall');
+          
+          let todoCounterProcessing = document.getElementById('todocounterspan-' + todoId + '-processing');
+          let todoCounterTesting = document.getElementById('todocounterspan-' + todoId + '-testing');
+          
+          let todoCounterSearched = document.getElementById('todocounterspan-' + todoId + '-insearch');
+
+          if (todoWorkingtime !== 0) {
+
+            let countUp = '<i class="fa fa-clock-o w3-text-white" style="margin-top:3px;"></i> ' + formatWorkTime(Date.now(), todoWorkingtime);
+
+            if ( todoCounterAll !== null ) {
+              todoCounterAll.innerHTML = countUp;
+            }
+
+            if ( todoCounterProcessing !== null ) {
+              todoCounterProcessing.innerHTML = countUp;
+            }
+
+            if ( todoCounterTesting !== null ) {
+              todoCounterTesting.innerHTML = countUp;
+            }
+            
+            if ( todoCounterSearched !== null ) {
+              todoCounterSearched.innerHTML = countUp;
+            }
+
+          } else {
+
+            if ( todoCounterAll !== null ) {
+              todoCounterAll.innerHTML = '';
+            }
+
+            if ( todoCounterProcessing !== null ) {
+              todoCounterProcessing.innerHTML = '';
+            }
+
+            if ( todoCounterTesting !== null ) {
+              todoCounterTesting.innerHTML = '';
+            }
+            
+            if ( todoCounterSearched !== null ) {
+              todoCounterSearched.innerHTML = '';
+            }
+
+          }
+
+        }
+
+      }
+
+      function showModal(modalID, elementIDFocus) {
+        w3.addStyle('#' + modalID, 'display', 'block');
+        setTimeout( () => {
+          document.getElementById(elementIDFocus).focus();
+        }, 600)
+        
+      }
+
+      let modals = document.getElementsByClassName('w3-modal');
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function(event) {
+        Array.from(modals).forEach(function(modal) {
+          if (event.target == modal) {
+
+            if(autosaveInterval !== null) {
+              clearInterval(autosaveInterval);
+              autosaveInterval = null;
+            }
+            modal.style.display = "none";
+
+          }
+        });
+      }
+
+      const os = process.platform;
+      const electron = require('electron');
+      const {remote} = require('electron');
+      const {dialog} = require('electron').remote;
+      const app = electron.app || electron.remote.app;
+      const currentWindow = remote.getCurrentWindow();
+
+      const archiver = require('archiver');
+      const unzipper = require('unzipper');
+      
+      const sysDocumentsFolder = app.getPath('documents');
+
+      const path = require('path');
+      const fse = require('fs-extra');
+
+      const md = require('markdown-it')({
+        html: true,
+        linkify: true,
+        breaks: true
+      });
+
+      const Store = require('electron-store');
+      const store = new Store();
+
+      const Datastore = require('nedb');
+      let projectsDB, todosDB;
+      let projectsJS, todosJS;
+
+      const projectView = document.getElementById('projectView');
+      const todoView = document.getElementById('todoView');
+      const resizer = document.getElementById('resizer');
+      const todoNoteInput = document.getElementById('todoNoteInput');
+
+      let wh = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+      let mainNavHeight = document.getElementById('mainNav').offsetHeight;
+      let cfh = wh - mainNavHeight;
+      projectView.style.height = cfh + "px";
+      projectView.style.marginTop = mainNavHeight + "px";
+      todoView.style.height = cfh + "px";
+      todoView.style.marginTop = mainNavHeight + "px";
+
+      currentWindow.on('resize', function () {
+        wh = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+        mainNavHeight = document.getElementById('mainNav').offsetHeight;
+        cfh = wh - mainNavHeight;
+        projectView.style.height = cfh + "px";
+        projectView.style.marginTop = mainNavHeight + "px";
+        todoView.style.height = cfh + "px";
+        todoView.style.marginTop = mainNavHeight + "px";
+      });
+
+      let workspacePath;
+      let currProjectId, currTodoId;
+
+      if (!store.has('settings.workspace')) {
+        showModal('createWorkspaceModal', 'workspacePathInput');
+        workspacePath = path.join(sysDocumentsFolder, 'Phreshistant DB');
+        document.getElementById('workspacePathInput').value = workspacePath;
+        document.getElementById('newWorkspacePathInput').value = workspacePath;
+      } else {
+        workspacePath = store.get('settings.workspace');
+        document.getElementById('workspacePathInput').value = workspacePath;
+        document.getElementById('newWorkspacePathInput').value = workspacePath;
+        fse.ensureDir(workspacePath, err => {
+          if (err) console.log(err);
+          loadDBs();
+        });
+      }
+
+      function createWorkspaceDialog() {
+
+        workspacePath = path.join(sysDocumentsFolder, 'Phreshistant DB');
+        setTimeout( function() {
+          workspacePath = dialog.showOpenDialog({properties: ['openDirectory']});
+          if (fse.existsSync(workspacePath.toString())) {
+            workspacePath = path.join(workspacePath.toString(), 'Phreshistant DB');
+            store.set('settings.workspace', workspacePath);
+            fse.ensureDir(workspacePath, err => {
+              if (err) alert(err);
+              loadDBs();
+            });
+          }
+        }, 500);
+
+      }
+
+      function editWorkspaceDialog() {
+
+        workspacePath = store.get('settings.workspace');
+        newWorkspacePath = workspacePath;
+        setTimeout( function() {
+          newWorkspacePath = dialog.showOpenDialog({properties: ['openDirectory']});
+          if (fse.existsSync(newWorkspacePath.toString())) {
+            newWorkspacePath = path.join(newWorkspacePath.toString(), 'Phreshistant DB');
+            fse.ensureDir(newWorkspacePath, err => {
+              if (err) alert(err);
+
+              try {
+                fse.copySync( path.join(workspacePath, 'projects.db'), path.join(newWorkspacePath, 'projects.db') );
+                fse.copySync( path.join(workspacePath, 'todos.db'), path.join(newWorkspacePath, 'todos.db') );
+                fse.copySync( path.join(workspacePath, 'reminders.db'), path.join(newWorkspacePath, 'reminders.db') );
+                
+                store.set('settings.workspace_old', workspacePath);
+                store.set('settings.workspace', newWorkspacePath);
+                document.location.reload(true);
+
+              } catch (err2) {
+                alert(err2)
+              }
+
+            });
+          }
+        }, 500);
+
+      }
+      
+      if (store.has('settings.workspace_old')) {
+        setTimeout( () => {
+          let oldWorkspacePath = store.get('settings.workspace_old');
+          fse.removeSync(path.join(oldWorkspacePath, 'projects.db'));
+          fse.removeSync(path.join(oldWorkspacePath, 'todos.db'));
+          fse.removeSync(path.join(oldWorkspacePath, 'reminders.db'));
+          fse.removeSync(oldWorkspacePath);
+          store.delete('settings.workspace_old');
+        }, 2000);
+      }
+
+      function loadDBs() {
+
+        const projectsPath = path.join(workspacePath, 'projects.db');
+        projectsDB = new Datastore({ filename: projectsPath, autoload: true });
+
+        const todosPath = path.join(workspacePath, 'todos.db');
+        todosDB = new Datastore({ filename: todosPath, autoload: true });
+
+        const remindersPath = path.join(workspacePath, 'reminders.db');
+        remindersDB = new Datastore({ filename: remindersPath, autoload: true });
+
+        projectsJS = require(__dirname + '/assets/js/projects.js');
+        todosJS = require(__dirname + '/assets/js/todos.js');
+        remindersJS = require(__dirname + '/assets/js/reminders.js');
+
+      }
+
+      if (store.has('settings.viewswidth')) {
+        let viewsWidth = store.get('settings.viewswidth');
+        let widthsChunks = viewsWidth.split('-');
+        projectView.style.width = widthsChunks[0] + '%';
+        todoView.style.width = widthsChunks[1] + '%';
+        resizer.value = widthsChunks[0];
+      } else {
+        store.set('settings.viewswidth', '30-70');
+        projectView.style.width = 30 + '%';
+        todoView.style.width = 70 + '%';
+      }
+
+      /* import & export db */
+
+      function importDB() {
+
+        let dbZip = dialog.showOpenDialog({properties: ['openFile'],filters: [{name: 'Zip archives', extensions: ['zip']}]});
+        fse.createReadStream(dbZip.toString()).pipe(unzipper.Extract({ path: workspacePath }));
+        setTimeout( () => { document.location.href='index.html' }, 1000);
+
+      }
+
+      function exportDB() {
+
+        dialog.showSaveDialog({defaultPath: 'Phreshistant DB.zip'}, (dbZip) => {
+
+          let projectsdbfile = path.join(workspacePath, 'projects.db');
+          let todosdbfile = path.join(workspacePath, 'todos.db');
+          let remindersdbfile = path.join(workspacePath, 'reminders.db');
+          
+          let outputZip = fse.createWriteStream(dbZip);
+
+          let archive = archiver('zip', {
+            zlib: { level: 9 }
+          });
+
+          archive.pipe(outputZip);
+          archive.append(fse.createReadStream(projectsdbfile), { name: 'projects.db' });
+          archive.append(fse.createReadStream(todosdbfile), { name: 'todos.db' });
+          archive.append(fse.createReadStream(remindersdbfile), { name: 'reminders.db' });
+          archive.finalize();
+
+        });
+
+      }
+
+      /* views */
+
+      function showResizer() {
+
+        resizer.style.display='block';
+        projectView.style.marginTop = '5px';
+        todoView.style.marginTop = '5px';
+
+      }
+
+      function resizeViews(xPercentProjects) {
+
+        let xPercentTodos = 100 - xPercentProjects;
+
+        if (xPercentProjects !== 0 && xPercentProjects !== 100) {
+          projectView.style.width = xPercentProjects + '%';
+          todoView.style.width = xPercentTodos + '%';
+        }
+
+      }
+
+      function saveViews(xPercentProjects) {
+
+        let xPercentTodos = 100 - xPercentProjects;
+
+        if (xPercentProjects !== 0 && xPercentProjects !== 100) {
+
+          store.set('settings.viewswidth', xPercentProjects + '-' + xPercentTodos);
+          resizer.style.display='none';
+          projectView.style.marginTop = '40px';
+          todoView.style.marginTop = '40px';
+
+        }
+
+      }
+
+      if (store.has('settings.theme')) {
+        document.getElementById('themecss').href= 'assets/css/themes/theme-' + store.get('settings.theme') + '.css';
+      } else {
+        changeTheme('light');
+      }
+
+      function changeTheme(currAppTheme) {
+
+        store.set('settings.theme', currAppTheme);
+        document.getElementById('themecss').href= 'assets/css/themes/theme-' + currAppTheme + '.css';
+
+      }
+
+      /* search todos */
+
+      function showSearchBlock() {
+
+        w3.addStyle('#searchBlock', 'visibility', 'visible');
+        setTimeout( () => {
+          document.getElementById('searchInput').focus();
+        }, 200);
+        w3.show('#TodoSearchedButton');
+        listTodosByState('TodoSearched');
+
+      }
+
+      function showSearchBlockCN() {
+
+        w3.addStyle('#searchBlock-cn', 'visibility', 'visible');
+        setTimeout( () => {
+          document.getElementById('searchInput-cn').focus();
+        }, 200);
+        w3.show('#TodoSearchedButton');
+        listTodosByState('TodoSearched');
+
+      }
+
+      function hideSearchBlock() {
+
+        w3.addStyle('#searchBlock', 'visibility', 'hidden');
+        w3.hide('#TodoSearchedButton');
+        document.getElementById('searchInput').value = '';
+        document.getElementById('todoSearchedList').innerHTML = '';
+        listTodosByState('TodoAll');
+
+      }
+
+      function hideSearchBlockCN() {
+
+        w3.addStyle('#searchBlock-cn', 'visibility', 'hidden');
+        w3.hide('#TodoSearchedButton');
+        document.getElementById('searchInput-cn').value = '';
+        document.getElementById('todoSearchedList').innerHTML = '';
+        listTodosByState('TodoAll');
+
+      }
+
+      function filterTodos(searchedText) {
+
+        let todoStateSelector2 = `
+        <i class="fa fa-caret-down w3-dropdown-hover" style="background-color:transparent;">
+          <div class="w3-dropdown-content w3-bar-block w3-border w3-animate-right w3-right statechanger-dd">
+            <a href="#" onclick="todosJS.updateTodoState(_TODOID_, 1);setTimeout( () => { filterTodos('` + searchedText + `') }, 200);" class="w3-bar-item w3-button w3-button-app w3-text-blue stateselectorbutton">
+              <i class="fa fa-play"></i>
+              Run
+            </a>
+            <a href="#" onclick="todosJS.updateTodoState(_TODOID_, 2);setTimeout( () => { filterTodos('` + searchedText + `') }, 200);" class="w3-bar-item w3-button w3-button-app w3-text-orange stateselectorbutton">
+              <i class="fa fa-heartbeat"></i>
+              Test
+            </a>
+            <a href="#" onclick="todosJS.updateTodoState(_TODOID_, 3);setTimeout( () => { filterTodos('` + searchedText + `') }, 200);" class="w3-bar-item w3-button w3-button-app w3-text-amber stateselectorbutton">
+              <i class="fa fa-stop"></i>
+              Stop
+            </a>
+            <a href="#" onclick="todosJS.updateTodoState(_TODOID_, 4);setTimeout( () => { filterTodos('` + searchedText + `') }, 200);" class="w3-bar-item w3-button w3-button-app w3-text-green stateselectorbutton">
+              <i class="fa fa-check"></i>
+              Finish
+            </a>
+            <hr class="stateselectorseparator" />
+            <a href="#" onclick="todosJS.editTodoNote(_TODOID_);hideSearchBlock();" class="w3-bar-item w3-button w3-button-app w3-text-brown stateselectorbutton">
+              <i class="fa fa-edit"></i>
+              Edit note
+            </a>
+            <hr class="stateselectorseparator" />
+            <a href="#" onclick="todosJS.deleteTodo(_TODOID_);setTimeout( () => { filterTodos('` + searchedText + `') }, 200);" class="w3-bar-item w3-button w3-button-app w3-text-black stateselectorbutton">
+              <i class="fa fa-times"></i>
+              Delete
+            </a>
+          </div>
+        </i>`;
+
+        let todoPrioritySelector2 = `
+        <i class="fa fa-caret-down w3-dropdown-hover w3-right" style="background-color:transparent;margin-top:3px;">
+          <div class="w3-dropdown-content w3-bar-block w3-border w3-animate-right w3-right">
+            <a href="#" onclick="todosJS.updateTodoPriority(_TODOID_, 1);setTimeout( () => { filterTodos('` + searchedText + `') }, 200);" class="w3-bar-item w3-button w3-button-app w3-text-red stateselectorbutton">
+              <i class="fa fa-thermometer-full"></i>
+              High
+            </a>
+            <a href="#" onclick="todosJS.updateTodoPriority(_TODOID_, 2);setTimeout( () => { filterTodos('` + searchedText + `') }, 200);" class="w3-bar-item w3-button w3-button-app w3-text-amber stateselectorbutton">
+              <i class="fa fa-thermometer-half"></i>
+              Medium
+            </a>
+            <a href="#" onclick="todosJS.updateTodoPriority(_TODOID_, 3);setTimeout( () => { filterTodos('` + searchedText + `') }, 200);" class="w3-bar-item w3-button w3-button-app w3-text-green stateselectorbutton">
+              <i class="fa fa-thermometer-empty"></i>
+              Low
+            </a>
+          </div>
+        </i>`;
+
+        document.getElementById('todoSearchedList').innerHTML = '';
+
+        let todoStateIcon, todoStateColor, todoCounterStateColor = '';
+
+        let searchedTextRegExp = new RegExp(".*"+searchedText+".*"); 
+
+        todosDB.find({ $or: [ { _todo: {$regex : searchedTextRegExp} }, { _todoDesc: {$regex : searchedTextRegExp} } ] }).sort({ _stateId: 1, _priority: 1 }).exec(function (err, docs) {
+          docs.forEach(function(d) {
+            
+            let currTodoStateSelector = todoStateSelector2.replace(new RegExp('_TODOID_', 'g'), d._id);
+            
+            let currTodoPrioritySelector = todoPrioritySelector2.replace(new RegExp('_TODOID_', 'g'), d._id);
+
+            let todoPriority = '';
+
+            let workedTime = formatWorkTime(0, d._time);
+      
+            switch (d._priority) {
+              case 1:
+                todoPriority = '<span class="w3-small w3-right w3-tag w3-round w3-pale-red todopriorityspan"><i class="fa fa-thermometer-full w3-left w3-text-red"></i> High ' + currTodoPrioritySelector + '</span>';
+                break;
+              case 2:
+                todoPriority = '<span class="w3-small w3-right w3-tag w3-round w3-pale-yellow todopriorityspan"><i class="fa fa-thermometer-half w3-left w3-text-deep-orange"></i> Medium' + currTodoPrioritySelector + '</span>';
+                break;
+              case 3:
+                todoPriority = '<span class="w3-small w3-right w3-tag w3-round w3-pale-green todopriorityspan"><i class="fa fa-thermometer-empty w3-left w3-text-orange"></i> Low ' + currTodoPrioritySelector + '</span>';
+                break;
+            }
+
+            switch(d._stateId) {
+              case 1:
+                todoStateIcon = '<i class="fa fa-play w3-text-blue"></i>';
+                todoStateColor = 'w3-hover-text-blue';
+                todoCounterStateColor = 'w3-blue';
+                countUpIntervals.push(d._id + '_' + d._workstart);
+                break;
+              case 2:
+                todoStateIcon = '<i class="fa fa-heartbeat w3-text-orange"></i>';
+                todoStateColor = 'w3-hover-text-orange';
+                todoCounterStateColor = 'w3-orange';
+                countUpIntervals.push(d._id + '_' + d._workstart);
+                break;
+              case 3:
+                todoStateIcon = '<i class="fa fa-stop w3-text-amber"></i>';
+                todoStateColor = 'w3-hover-text-amber';
+                countUpIntervals.push(d._id + '_' + 0);
+                break;
+              case 4:
+                todoStateIcon = '<i class="fa fa-check w3-text-green"></i>';
+                todoStateColor = 'w3-hover-text-green';
+                countUpIntervals.push(d._id + '_' + 0);
+                break;
+              default:
+                // error
+                todoStateIcon = '<i class="fa fa-warning w3-text-red"></i>';
+                todoStateColor = 'w3-hover-text-red';
+                countUpIntervals.push(d._id + '_' + 0);
+                break;
+            }
+            
+            document.getElementById('todoSearchedList').innerHTML += '<li id="todoli-' + d._id + '-insearch" class="w3-animate-bottom w3-clear todoli ' + todoStateColor + '"><button onclick="toggleShowTodoNote(\'todo-' + d._id + '-insearch\');" class="w3-button w3-block w3-left-align todoshowhidedescbutton ' + todoStateColor + '">' + todoStateIcon + ' ' + d._todo + '<span id="todocounterspan-' + d._id + '-insearch" class="w3-small w3-tag w3-center w3-round todocounterspan ' + todoCounterStateColor + '"></span></button>' + todoPriority + '<span class="w3-small w3-right todostateselectorspan"><i class="fa fa-clock-o"></i>' + workedTime + ' ' + currTodoStateSelector + '</span><div id="todo-' + d._id + '-insearch" class="w3-container w3-hide">' + md.render(d._todoDesc) + '</div></li>';
+
+          });
+        });
+
+      }
+
+      /* set active items */
+
+      if (store.has('activity.currProjectId')) {
+        currProjectId = store.get('activity.currProjectId');
+        setTimeout( () => {
+          setActiveProject();
+          todosJS.getTodos(currProjectId);
+        }, 1000);
+      } else {
+        store.set('activity.currProjectId', 0);
+        currProjectId = 0;
+        setTimeout( () => {
+          setActiveProject();
+          todosJS.getTodos(currProjectId);
+        }, 1000);
+      }
+
+      if (store.has('activity.currTodoId')) {
+        currTodoId = store.get('activity.currTodoId');
+        setTimeout( () => {
+          setActiveTodo();
+        }, 1200);
+      } else {
+        store.set('activity.currTodoId', 0);
+      }
+
+      function setActiveProject() {
+
+        let i, projectli;
+        projectli = document.getElementsByClassName("projectli");
+
+        for (i = 0; i < projectli.length; i++) {
+          w3.removeClass('#' + projectli[i].id, 'active');
+        }
+
+        if (currProjectId > 0) {
+          w3.addClass('#projectli-' + currProjectId, 'active');
+        }
+
+      }
+
+      function setActiveTodo() {
+
+        let i, todoli;
+        todoli = document.getElementsByClassName("todoli");
+
+        for (i = 0; i < todoli.length; i++) {
+          w3.removeClass('#' + todoli[i].id, 'active');
+        }
+
+        if (currTodoId > 0) {
+
+          w3.addClass('#todoli-' + currTodoId + '-inall', 'active');
+          
+          if ( document.getElementsByClassName("todoli-" + currTodoId + '-processing') !== null ) {
+            w3.addClass('#todoli-' + currTodoId + '-processing', 'active');
+          }
+          
+          if ( document.getElementsByClassName("todoli-" + currTodoId + '-testing') !== null ) {
+            w3.addClass('#todoli-' + currTodoId + '-testing', 'active');
+          }
+          
+          if ( document.getElementsByClassName("todoli-" + currTodoId + '-idle') !== null ) {
+            w3.addClass('#todoli-' + currTodoId + '-idle', 'active');
+          }
+          
+          if ( document.getElementsByClassName("todoli-" + currTodoId + '-finished') !== null ) {
+            w3.addClass('#todoli-' + currTodoId + '-finished', 'active');
+          }
+          
+          if ( document.getElementsByClassName("todoli-" + currTodoId + '-insearch') !== null ) {
+            w3.addClass('#todoli-' + currTodoId + '-insearch', 'active');
+          }
+
+        }
+
+      }
+
+      /* reminders */
+
+      function showRemindersBlock() {
+
+        w3.show('#RemindersButton');
+        listTodosByState('Reminders');
+
+      }
+
+      function hideRemindersBlock() {
+
+        w3.hide('#RemindersButton');
+        setTimeout( () => { listTodosByState('TodoAll'); }, 200);
+
+      }
+
+      function toggleShowReminderData(id) {
+
+        let reminderdatablock = document.getElementById(id);
+
+        if (reminderdatablock !== null) {
+
+          if (reminderdatablock.className.indexOf("w3-show") == -1) {
+            reminderdatablock.className += " w3-show";
+          } else {
+            reminderdatablock.className = reminderdatablock.className.replace(" w3-show", "");
+          }
+
+        }
+
+      }
+
+      let settedReminders = [];
+      
+      function checkReminders() {
+        
+        settedReminders.forEach( (r, i) => {
+
+          if (Date.now() >= r.time) {
+
+            settedReminders.splice(i, 1);
+
+            let todoIDsArr = [];
+            let todoUpdates = [];
+            let todoTexts = [];
+
+            if (r.todos !== '') {
+
+              if (r.todos.search(',') !== -1) {
+                todoIDsArr = r.todos.split(',');
+              } else {
+                todoIDsArr.push(r.todos);
+              }
+
+              for (let i = 0; i < todoIDsArr.length; i++) {
+                todoUpdates.push(todosJS.updateTodoStateToIdle(parseInt(todoIDsArr[i])));
+                todoTexts.push(todosJS.getTodoText(parseInt(todoIDsArr[i])));
+              }
+
+              Promise.all(todoUpdates).then( () => {
+                setTimeout( () => { todosJS.getTodos(currProjectId); }, 1000);
+              });
+
+            }
+
+            if (r.alert) {
+              alert(r.text);
+            }
+
+            if (r.modal) {
+
+              document.getElementById('reminderTextP').innerHTML = r.text;
+              if (r.todos !== '') {
+
+                Promise.all(todoTexts).then( (todoTextsLis) => {
+                  document.getElementById('reminderTextP').innerHTML += '<br>Todo(s) setted to Idle:<br><ul>' + todoTextsLis + '</ul>';
+                });
+
+              }
+
+              document.getElementById('reminderTimeP').innerHTML = dateTimeFormat(new Date(r.time));
+              document.getElementById('reminderTimeP').innerHTML += ', ' + r.type;
+              if (r.type === 'Periodic') {
+                document.getElementById('reminderTimeP').innerHTML += ' (' + r.period + ' minutes) '
+              }
+              
+              w3.show('#reminderModal');
+
+            }
+
+            if (r.focus) {
+              currentWindow.focus();
+            }
+
+            if (r.type === 'Once') {
+              remindersJS.deleteReminder(r.id);
+            } else {
+
+              let dt = new Date(r.time);
+              let nextReminderTime, settedReminderObj;
+
+              switch (r.type) {
+                case 'Periodic':
+                  nextReminderTime = Date.now() + r.period*60000;
+                  settedReminderObj = { id: r.id, time: nextReminderTime, text: r.text, type: r.type, period: r.period, alert: r.alert, modal: r.modal, focus: r.focus, todos: r.todos }
+                  settedReminders.push(settedReminderObj);
+                  break;
+                case 'Dialy':
+                  nextReminderTime = r.time + 24*60*60*1000;
+                  if (nextReminderTime < Date.now()) {
+                    while (nextReminderTime < Date.now()) { nextReminderTime += 24*60*60*1000; }
+                  }
+                  settedReminderObj = { id: r.id, time: nextReminderTime, text: r.text, type: r.type, period: r.period, alert: r.alert, modal: r.modal, focus: r.focus, todos: r.todos }
+                  settedReminders.push(settedReminderObj);
+                  break;
+                case 'Weekly':
+                  nextReminderTime = r.time + 7*24*60*60*1000;
+                  if (nextReminderTime < Date.now()) {
+                    while (nextReminderTime < Date.now()) { nextReminderTime += 7*24*60*60*1000; }
+                  }
+                  settedReminderObj = { id: r.id, time: nextReminderTime, text: r.text, type: r.type, period: r.period, alert: r.alert, modal: r.modal, focus: r.focus, todos: r.todos }
+                  settedReminders.push(settedReminderObj);
+                  break;
+                case 'Monthly':
+                  nextReminderTime = dt.setMonth(dt.getMonth() + 1);
+                  if (nextReminderTime < Date.now()) {
+                    while (nextReminderTime < Date.now()) { nextReminderTime += dt.setMonth(dt.getMonth() + 1); }
+                  }
+                  settedReminderObj = { id: r.id, time: nextReminderTime, text: r.text, type: r.type, period: r.period, alert: r.alert, modal: r.modal, focus: r.focus, todos: r.todos }
+                  settedReminders.push(settedReminderObj);
+                  break;
+                case 'Yearly':
+                  nextReminderTime = dt.setFullYear(dt.getFullYear() + 1);
+                  if (nextReminderTime < Date.now()) {
+                    while (nextReminderTime < Date.now()) { nextReminderTime += dt.setFullYear(dt.getFullYear() + 1); }
+                  }
+                  settedReminderObj = { id: r.id, time: nextReminderTime, text: r.text, type: r.type, period: r.period, alert: r.alert, modal: r.modal, focus: r.focus, todos: r.todos }
+                  settedReminders.push(settedReminderObj);
+                  break;
+                
+                default:
+                  // error
+                  nextReminderTime = 0;
+                  remindersJS.deleteReminder(r.id);
+                  break;
+              }
+
+              remindersJS.updateReminderTime(r.id, nextReminderTime);
+
+            }
+
+          }
+
+        });
+
+      }
+    </script>
+  </body>
+</html>
