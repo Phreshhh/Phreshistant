@@ -40,6 +40,7 @@
             <a href="#" class="w3-bar-item w3-button w3-button-app" onclick="showModal('editWorkspaceModal', 'newWorkspacePathInput');">Save folder</a>
             <a href="#" class="w3-bar-item w3-button w3-button-app" onclick="importDB();">Import database</a>
             <a href="#" class="w3-bar-item w3-button w3-button-app" onclick="exportDB();">Export database</a>
+            <a href="#" class="w3-bar-item w3-button w3-button-app" onclick="autostartApp();"><i id="autostartcheck" class="fa fa-check"></i> Auto start</a>
           </div>
         </div>
         <div class="w3-dropdown-hover w3-dropdown-app-hover w3-hide-small">
@@ -81,6 +82,9 @@
           <div class="w3-dropdown-content w3-card-4 w3-bar-block">
             <a href="#" class="w3-bar-item w3-button w3-button-app" onclick="showResizer();">Resize views</a>
             <a href="#" class="w3-bar-item w3-button w3-button-app" onclick="showModal('editWorkspaceModal', 'newWorkspacePathInput');">Save folder</a>
+            <a href="#" class="w3-bar-item w3-button w3-button-app" onclick="importDB();">Import database</a>
+            <a href="#" class="w3-bar-item w3-button w3-button-app" onclick="exportDB();">Export database</a>
+            <a href="#" class="w3-bar-item w3-button w3-button-app" onclick="autostartApp();"><i id="autostartcheck-cn" class="fa fa-check"></i> Auto start</a>
           </div>
         </div>
         <div class="w3-dropdown-hover w3-dropdown-app-hover">
@@ -553,6 +557,7 @@
       const unzipper = require('unzipper');
       
       const sysDocumentsFolder = app.getPath('documents');
+      const appPath = app.getPath('exe');
 
       const path = require('path');
       const fse = require('fs-extra');
@@ -592,6 +597,51 @@
         todoView.style.height = cfh + "px";
         todoView.style.marginTop = mainNavHeight + "px";
       });
+
+      let AutoLaunch = require('auto-launch');
+      let PhreshistantAutoLauncher = new AutoLaunch({
+          name: 'Phreshistant',
+          path: appPath
+      });
+      if (store.has('settings.autolaunch')) {
+        let autolaunching = store.get('settings.autolaunch');
+        if (!autolaunching) {
+          document.getElementById('autostartcheck').style.display = 'none';
+          document.getElementById('autostartcheck-cn').style.display = 'none';
+        }
+      } else {
+        store.set('settings.autolaunch', false);
+        document.getElementById('autostartcheck').style.display = 'none';
+        document.getElementById('autostartcheck-cn').style.display = 'none';
+      }
+
+      function autostartApp() {
+
+        let autolaunching = store.get('settings.autolaunch');
+        if (autolaunching) {
+          store.set('settings.autolaunch', false);
+          PhreshistantAutoLauncher.disable();
+          document.getElementById('autostartcheck').style.display = 'none';
+          document.getElementById('autostartcheck-cn').style.display = 'none';
+        } else {
+          store.set('settings.autolaunch', true);
+          PhreshistantAutoLauncher.enable();
+          document.getElementById('autostartcheck').style.display = 'inline-block';
+          document.getElementById('autostartcheck-cn').style.display = 'inline-block';
+
+          PhreshistantAutoLauncher.isEnabled()
+          .then(function(isEnabled) {
+            if(isEnabled) {
+              return;
+            }
+            PhreshistantAutoLauncher.enable();
+          })
+          .catch(function(err) {
+            console.log(err);
+          });
+        }
+
+      }
 
       let workspacePath;
       let currProjectId, currTodoId;
