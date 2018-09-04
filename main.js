@@ -22,7 +22,7 @@ function createWindow () {
   });
 
   mainWindowState.manage(mainWindow);
-  
+
   mainWindow.loadURL('file://' + __dirname + '/app/index.html');
 
   mainWindow.setMenu(null);

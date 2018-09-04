@@ -17,34 +17,38 @@
     <div class="w3-top w3-cear">
       <div id="mainNav" class="w3-bar w3-theme-d2 w3-left-align">
         <a id="openNav" class="w3-bar-item w3-button w3-button-app w3-hide-medium w3-hide-large w3-right w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
-        <a href="#" class="w3-bar-item w3-button w3-button-app" onclick="todosJS.getTodos(0);"><i class="fa fa-home w3-margin-right"></i>Home</a>
+        <a href="#" class="w3-bar-item w3-button w3-button-app" onclick="todosJS.getTodos(0);">Home</a>
         <div class="w3-dropdown-hover w3-dropdown-app-hover w3-hide-small">
-          <button class="w3-button w3-button-app">Reminders <i class="fa fa-caret-down"></i></button>     
+          <button class="w3-button w3-button-app">Reminders <i class="fa fa-caret-down"></i></button>
           <div class="w3-dropdown-content w3-animate-opacity w3-card-4 w3-bar-block">
             <a href="#" class="w3-bar-item w3-button w3-button-app" onclick="showRemindersBlock();">Reminders list</a>
             <a href="#" class="w3-bar-item w3-button w3-button-app" onclick="document.getElementById('createReminderModal').style.display='block';">New reminder</a>
           </div>
         </div>
         <div class="w3-dropdown-hover w3-dropdown-app-hover w3-hide-small">
-          <button class="w3-button w3-button-app">Theme <i class="fa fa-caret-down"></i></button>     
+          <button class="w3-button w3-button-app">Theme <i class="fa fa-caret-down"></i></button>
           <div class="w3-dropdown-content w3-animate-opacity w3-card-4 w3-bar-block">
             <a href="#" class="w3-bar-item w3-button w3-button-app" onclick="changeTheme('light');">Light</a>
             <a href="#" class="w3-bar-item w3-button w3-button-app" onclick="changeTheme('dark');">Dark</a>
             <a href="#" class="w3-bar-item w3-button w3-button-app" onclick="changeTheme('coffee');">Coffee</a>
+            <a href="#" class="w3-bar-item w3-button w3-button-app" onclick="changeTheme('purple');">Purple</a>
+            <a href="#" class="w3-bar-item w3-button w3-button-app" onclick="changeTheme('pink');">Hello Kitty</a>
           </div>
         </div>
         <div class="w3-dropdown-hover w3-dropdown-app-hover w3-hide-small">
-          <button class="w3-button w3-button-app">Settings <i class="fa fa-caret-down"></i></button>     
+          <button class="w3-button w3-button-app">Settings <i class="fa fa-caret-down"></i></button>
           <div class="w3-dropdown-content w3-animate-opacity w3-card-4 w3-bar-block">
+            <a href="#" class="w3-bar-item w3-button w3-button-app" onclick="toggelShowClock();">Show clock <i id="showclockcheck" class="fa fa-check"></i></a>
             <a href="#" class="w3-bar-item w3-button w3-button-app" onclick="showResizer();">Resize views</a>
             <a href="#" class="w3-bar-item w3-button w3-button-app" onclick="showModal('editWorkspaceModal', 'newWorkspacePathInput');">Save folder</a>
             <a href="#" class="w3-bar-item w3-button w3-button-app" onclick="importDB();">Import database</a>
             <a href="#" class="w3-bar-item w3-button w3-button-app" onclick="exportDB();">Export database</a>
-            <a href="#" class="w3-bar-item w3-button w3-button-app" onclick="autostartApp();"><i id="autostartcheck" class="fa fa-check"></i> Auto start</a>
+            <a href="#" class="w3-bar-item w3-button w3-button-app" onclick="autostartApp();">Auto start <i id="autostartcheck" class="fa fa-check"></i></a>
+            <a href="index.html" class="w3-bar-item w3-button w3-button-app">Reload app</a>
           </div>
         </div>
         <div class="w3-dropdown-hover w3-dropdown-app-hover w3-hide-small">
-          <button class="w3-button w3-button-app">About <i class="fa fa-caret-down"></i></button>     
+          <button class="w3-button w3-button-app">About <i class="fa fa-caret-down"></i></button>
           <div class="w3-dropdown-content w3-animate-opacity w3-card-4 w3-bar-block">
             <a id="phreshistant" href="#" class="w3-bar-item w3-button w3-button-app" onclick="openExternallink('app');">Phreshistant</a>
             <a id="phresh-it" href="#" class="w3-bar-item w3-button w3-button-app" onclick="openExternallink('phreshit');">Phresh-IT</a>
@@ -63,32 +67,34 @@
       <!-- Navbar on small screens -->
       <div id="collapsedNav" class="w3-bar-block w3-theme-d2 w3-hide w3-hide-large w3-hide-medium w3-white">
         <div class="w3-dropdown-hover w3-dropdown-app-hover">
-          <button class="w3-button w3-button-app">Reminders <i class="fa fa-caret-down"></i></button>     
+          <button class="w3-button w3-button-app">Reminders <i class="fa fa-caret-down"></i></button>
           <div class="w3-dropdown-content w3-card-4 w3-bar-block">
             <a href="#" class="w3-bar-item w3-button w3-button-app" onclick="showRemindersBlock();">Reminders list</a>
             <a href="#" class="w3-bar-item w3-button w3-button-app" onclick="document.getElementById('createReminderModal').style.display='block';">New reminder</a>
           </div>
         </div>
         <div class="w3-dropdown-hover w3-dropdown-app-hover">
-          <button class="w3-button w3-button-app">Theme <i class="fa fa-caret-down"></i></button>     
+          <button class="w3-button w3-button-app">Theme <i class="fa fa-caret-down"></i></button>
           <div class="w3-dropdown-content w3-animate-opacity w3-card-4 w3-bar-block">
             <a href="#" class="w3-bar-item w3-button w3-button-app" onclick="changeTheme('light');">Light</a>
             <a href="#" class="w3-bar-item w3-button w3-button-app" onclick="changeTheme('dark');">Dark</a>
             <a href="#" class="w3-bar-item w3-button w3-button-app" onclick="changeTheme('coffee');">Coffee</a>
+            <a href="#" class="w3-bar-item w3-button w3-button-app" onclick="changeTheme('purple');">Purple</a>
+            <a href="#" class="w3-bar-item w3-button w3-button-app" onclick="changeTheme('pink');">Hello Kitty</a>
           </div>
         </div>
         <div class="w3-dropdown-hover w3-dropdown-app-hover">
-          <button class="w3-button w3-button-app">Settings <i class="fa fa-caret-down"></i></button>     
+          <button class="w3-button w3-button-app">Settings <i class="fa fa-caret-down"></i></button>
           <div class="w3-dropdown-content w3-card-4 w3-bar-block">
             <a href="#" class="w3-bar-item w3-button w3-button-app" onclick="showResizer();">Resize views</a>
             <a href="#" class="w3-bar-item w3-button w3-button-app" onclick="showModal('editWorkspaceModal', 'newWorkspacePathInput');">Save folder</a>
             <a href="#" class="w3-bar-item w3-button w3-button-app" onclick="importDB();">Import database</a>
             <a href="#" class="w3-bar-item w3-button w3-button-app" onclick="exportDB();">Export database</a>
-            <a href="#" class="w3-bar-item w3-button w3-button-app" onclick="autostartApp();"><i id="autostartcheck-cn" class="fa fa-check"></i> Auto start</a>
+            <a href="#" class="w3-bar-item w3-button w3-button-app" onclick="autostartApp();">Auto start <i id="autostartcheck-cn" class="fa fa-check"></i></a>
           </div>
         </div>
         <div class="w3-dropdown-hover w3-dropdown-app-hover">
-          <button class="w3-button w3-button-app">About <i class="fa fa-caret-down"></i></button>     
+          <button class="w3-button w3-button-app">About <i class="fa fa-caret-down"></i></button>
           <div class="w3-dropdown-content w3-card-4 w3-bar-block">
               <a id="phreshistant-cn" href="#" class="w3-bar-item w3-button w3-button-app" onclick="openExternallink('app');">Phreshistant</a>
               <a id="phresh-it-cn" href="#" class="w3-bar-item w3-button w3-button-app" onclick="openExternallink('phreshit');">Phresh-IT</a>
@@ -104,7 +110,7 @@
     </div>
 
     <input id="resizer" type="range" value="30" min="0" max="100" style="width:100%;display:none;" oninput="resizeViews(this.value)" onchange="saveViews(this.value);">
-    
+
     <div id="projectView" class="w3-left">
       <h4 class="w3-left"> Projects <i class="fa fa-plus w3-large clickable" onclick="showModal('createProjectModal', 'projectNameInput')"></i> </h4>
       <ul id="projectList" class="w3-left"></ul>
@@ -172,6 +178,13 @@
       </div>
     </div>
 
+    <div id="updateProjectWorkPriceModal" class="w3-modal">
+      <div class="w3-modal-content w3-animate-top">
+        <input id="projectWorkPriceProjectIDInput" type="hidden" value="0">
+        <input id="projectWorkPriceInput" class="w3-input w3-animate-input w3-round modalinputfield" type="text" onkeyup="projectsJS.addWorkPriceToProjectListener(event, this.value);" placeholder="Project price per hour">
+      </div>
+    </div>
+
     <div id="createTodoModal" class="w3-modal">
       <div class="w3-modal-content w3-animate-top">
         <input id="todoInput" class="w3-input w3-animate-input w3-round modalinputfield" type="text" onkeyup="todosJS.saveTodoListener(event, this.value);">
@@ -198,6 +211,13 @@
         </div>
         <textarea id="todoNoteInput" class="w3-input w3-animate-input w3-round" style="width:50%;margin:0 auto;box-shadow:5px 5px 50px;" rows="25"></textarea>
 
+      </div>
+    </div>
+
+    <div id="updateTodoWorkPriceModal" class="w3-modal">
+      <div class="w3-modal-content w3-animate-top">
+        <input id="todoWorkPriceTodoIDInput" type="hidden" value="0">
+        <input id="todoWorkPriceInput" class="w3-input w3-animate-input w3-round modalinputfield" type="text" onkeyup="todosJS.addWorkPriceToTodoListener(event, this.value);" placeholder="Todo price per hour">
       </div>
     </div>
 
@@ -295,7 +315,7 @@
             <div class="w3-col m12 w3-center">
               <ul id="newReminderTodoAddedList" class="w3-ul w3-small"></ul>
             </div>
-            
+
           </div>
 
         </div>
@@ -309,8 +329,8 @@
 
     <div id="reminderModal" class="w3-modal">
       <div class="w3-modal-content">
-        <header class="w3-container w3-red"> 
-          <span class="w3-button w3-display-topright" onclick="document.getElementById('reminderModal').style.display='none';" >&times;</span>
+        <header class="w3-container w3-red">
+          <span class="w3-button w3-button-app w3-display-topright" onclick="document.getElementById('reminderModal').style.display='none';">&times;</span>
           <h2>Reminder</h2>
         </header>
         <div class="w3-container w3-white">
@@ -342,11 +362,11 @@
           let collapsedNav = document.getElementById("collapsedNav");
           if (collapsedNav.className.indexOf("w3-show") == -1) {
             collapsedNav.className += " w3-show";
-          } else { 
+          } else {
             collapsedNav.className = collapsedNav.className.replace(" w3-show", "");
           }
       }
-      
+
       function openExternallink(gotohomepage) {
         switch (gotohomepage) {
           case 'app':
@@ -357,6 +377,10 @@
             break;
           case 'electron':
             require('electron').shell.openExternal('https://electronjs.org/');
+            break;
+
+          default:
+            require('electron').shell.openExternal(gotohomepage);
             break;
         }
       }
@@ -433,8 +457,14 @@
         let days = Math.floor(delta / 86400);
         delta -= days * 86400;
 
+        let hoursfromdays = days * 24;
+        let hoursfromyears = years * 8760;
+
         let hours = Math.floor(delta / 3600) % 24;
         delta -= hours * 3600;
+
+        hours += hoursfromyears;
+        hours += hoursfromdays;
 
         let minutes = Math.floor(delta / 60) % 60;
         delta -= minutes * 60;
@@ -443,17 +473,42 @@
 
         let workedTime = '';
 
+        workedTime = hours + ":" + ('0' + minutes).slice(-2) + ":" + ('0' + seconds).slice(-2);
+
+        return workedTime;
+      }
+
+      function formatWorkTime2(date_from, date_to) {
+
+        let delta = Math.abs(date_from - date_to) / 1000;
+
+        let years = Math.floor(delta / 31536000);
+        delta -= years * 31536000;
+
+        let days = Math.floor(delta / 86400);
+        delta -= days * 86400;
+
+        let hours = Math.floor(delta / 3600) % 24;
+        delta -= hours * 3600;
+
+        let minutes = Math.floor(delta / 60) % 60;
+        delta -= minutes * 60;
+
+        let seconds = Math.floor(delta % 60);
+
+        let workedTime2 = '';
+
         if (years !== 0) {
-          workedTime = years + "y, " + days + "d, " + ('0' + hours).slice(-2) + ":" + ('0' + minutes).slice(-2) + ":" + ('0' + seconds).slice(-2);
+          workedTime2 = years + "y, " + days + "d, " + ('0' + hours).slice(-2) + ":" + ('0' + minutes).slice(-2) + ":" + ('0' + seconds).slice(-2);
         } else {
           if (days !== 0) {
-            workedTime = days + "d, " + ('0' + hours).slice(-2) + ":" + ('0' + minutes).slice(-2) + ":" + ('0' + seconds).slice(-2);
+            workedTime2 = days + "d, " + ('0' + hours).slice(-2) + ":" + ('0' + minutes).slice(-2) + ":" + ('0' + seconds).slice(-2);
           } else {
-            workedTime = ('0' + hours).slice(-2) + ":" + ('0' + minutes).slice(-2) + ":" + ('0' + seconds).slice(-2);
+            workedTime2 = ('0' + hours).slice(-2) + ":" + ('0' + minutes).slice(-2) + ":" + ('0' + seconds).slice(-2);
           }
         }
 
-        return workedTime;
+        return workedTime2;
       }
 
       function dateTimeFormat(datetime) {
@@ -464,18 +519,54 @@
         return newDatetime;
       }
 
+      function getWorkPrice(date_from, date_to, price_per_hour) {
+
+        let delta = Math.abs(date_from - date_to) / 1000;
+
+        let years = Math.floor(delta / 31536000);
+        delta -= years * 31536000;
+
+        let days = Math.floor(delta / 86400);
+        delta -= days * 86400;
+
+        let hoursfromdays = days * 24;
+        let hoursfromyears = years * 8760;
+
+        let hours = Math.floor(delta / 3600) % 24;
+        delta -= hours * 3600;
+
+        hours += hoursfromyears;
+        hours += hoursfromdays;
+
+        let minutes = Math.floor(delta / 60) % 60;
+        delta -= minutes * 60;
+
+        let workPrice = 0;
+
+        if (minutes > 0) {
+          if (minutes >= 30) {
+            hours += 1;
+          } else {
+            hours += 0.5;
+          }
+        }
+        workPrice += hours * price_per_hour;
+
+        return workPrice;
+      }
+
       function todoCountUps() {
-        
+
         for (let c = 0; c < countUpIntervals.length; c++) {
 
           let todoIntervalParts = countUpIntervals[c].split('_');
           let todoId = parseInt(todoIntervalParts[0]);
           let todoWorkingtime = parseInt(todoIntervalParts[1]);
           let todoCounterAll = document.getElementById('todocounterspan-' + todoId + '-inall');
-          
+
           let todoCounterProcessing = document.getElementById('todocounterspan-' + todoId + '-processing');
           let todoCounterTesting = document.getElementById('todocounterspan-' + todoId + '-testing');
-          
+
           let todoCounterSearched = document.getElementById('todocounterspan-' + todoId + '-insearch');
 
           if (todoWorkingtime !== 0) {
@@ -493,7 +584,7 @@
             if ( todoCounterTesting !== null ) {
               todoCounterTesting.innerHTML = countUp;
             }
-            
+
             if ( todoCounterSearched !== null ) {
               todoCounterSearched.innerHTML = countUp;
             }
@@ -511,7 +602,7 @@
             if ( todoCounterTesting !== null ) {
               todoCounterTesting.innerHTML = '';
             }
-            
+
             if ( todoCounterSearched !== null ) {
               todoCounterSearched.innerHTML = '';
             }
@@ -527,7 +618,25 @@
         setTimeout( () => {
           document.getElementById(elementIDFocus).focus();
         }, 600)
-        
+
+      }
+
+      function disableTooltips() {
+
+        let tooltiptextspans = document.getElementsByClassName('tooltiptextspan');
+        for (let i = 0; i < tooltiptextspans.length; i++) {
+          tooltiptextspans[i].classList.add('w3-hide');
+        }
+
+      }
+
+      function allowTooltips() {
+
+        let tooltiptextspans = document.getElementsByClassName('tooltiptextspan');
+        for (let i = 0; i < tooltiptextspans.length; i++) {
+          tooltiptextspans[i].classList.remove('w3-hide');
+        }
+
       }
 
       let modals = document.getElementsByClassName('w3-modal');
@@ -555,7 +664,7 @@
 
       const archiver = require('archiver');
       const unzipper = require('unzipper');
-      
+
       const sysDocumentsFolder = app.getPath('documents');
       const appPath = app.getPath('exe');
 
@@ -693,7 +802,7 @@
                 fse.copySync( path.join(workspacePath, 'projects.db'), path.join(newWorkspacePath, 'projects.db') );
                 fse.copySync( path.join(workspacePath, 'todos.db'), path.join(newWorkspacePath, 'todos.db') );
                 fse.copySync( path.join(workspacePath, 'reminders.db'), path.join(newWorkspacePath, 'reminders.db') );
-                
+
                 store.set('settings.workspace_old', workspacePath);
                 store.set('settings.workspace', newWorkspacePath);
                 document.location.reload(true);
@@ -707,7 +816,7 @@
         }, 500);
 
       }
-      
+
       if (store.has('settings.workspace_old')) {
         setTimeout( () => {
           let oldWorkspacePath = store.get('settings.workspace_old');
@@ -765,7 +874,7 @@
           let projectsdbfile = path.join(workspacePath, 'projects.db');
           let todosdbfile = path.join(workspacePath, 'todos.db');
           let remindersdbfile = path.join(workspacePath, 'reminders.db');
-          
+
           let outputZip = fse.createWriteStream(dbZip);
 
           let archive = archiver('zip', {
@@ -831,6 +940,31 @@
 
       }
 
+      if (store.has('settings.showclock')) {
+        let showclock = store.get('settings.showclock');
+        if (!showclock) {
+          document.getElementById('dateTimeHolder').style.display = 'none';
+          document.getElementById('showclockcheck').style.display = 'none';
+        }
+      } else {
+        store.set('settings.showclock', true);
+      }
+
+      function toggelShowClock() {
+
+        let showclock = store.get('settings.showclock');
+        if (showclock) {
+          document.getElementById('dateTimeHolder').style.display = 'none';
+          document.getElementById('showclockcheck').style.display = 'none';
+          store.set('settings.showclock', false);
+        } else {
+          document.getElementById('dateTimeHolder').style.display = 'inline-block';
+          document.getElementById('showclockcheck').style.display = 'inline-block';
+          store.set('settings.showclock', true);
+        }
+
+      }
+
       /* search todos */
 
       function showSearchBlock() {
@@ -878,7 +1012,7 @@
       function filterTodos(searchedText) {
 
         let todoStateSelector2 = `
-        <i class="fa fa-caret-down w3-dropdown-hover" style="background-color:transparent;">
+        <i class="fa fa-caret-down w3-dropdown-hover" style="background-color:transparent;" onmouseover="disableTooltips();" onmouseleave="allowTooltips();">
           <div class="w3-dropdown-content w3-bar-block w3-border w3-animate-right w3-right statechanger-dd">
             <a href="#" onclick="todosJS.updateTodoState(_TODOID_, 1);setTimeout( () => { filterTodos('` + searchedText + `') }, 200);" class="w3-bar-item w3-button w3-button-app w3-text-blue stateselectorbutton">
               <i class="fa fa-play"></i>
@@ -931,19 +1065,19 @@
 
         let todoStateIcon, todoStateColor, todoCounterStateColor = '';
 
-        let searchedTextRegExp = new RegExp(".*"+searchedText+".*"); 
+        let searchedTextRegExp = new RegExp(".*"+searchedText+".*");
 
         todosDB.find({ $or: [ { _todo: {$regex : searchedTextRegExp} }, { _todoDesc: {$regex : searchedTextRegExp} } ] }).sort({ _stateId: 1, _priority: 1 }).exec(function (err, docs) {
           docs.forEach(function(d) {
-            
+
             let currTodoStateSelector = todoStateSelector2.replace(new RegExp('_TODOID_', 'g'), d._id);
-            
+
             let currTodoPrioritySelector = todoPrioritySelector2.replace(new RegExp('_TODOID_', 'g'), d._id);
 
             let todoPriority = '';
 
             let workedTime = formatWorkTime(0, d._time);
-      
+
             switch (d._priority) {
               case 1:
                 todoPriority = '<span class="w3-small w3-right w3-tag w3-round w3-pale-red todopriorityspan"><i class="fa fa-thermometer-full w3-left w3-text-red"></i> High ' + currTodoPrioritySelector + '</span>';
@@ -986,7 +1120,7 @@
                 countUpIntervals.push(d._id + '_' + 0);
                 break;
             }
-            
+
             document.getElementById('todoSearchedList').innerHTML += '<li id="todoli-' + d._id + '-insearch" class="w3-animate-bottom w3-clear todoli ' + todoStateColor + '"><button onclick="toggleShowTodoNote(\'todo-' + d._id + '-insearch\');" class="w3-button w3-block w3-left-align todoshowhidedescbutton ' + todoStateColor + '">' + todoStateIcon + ' ' + d._todo + '<span id="todocounterspan-' + d._id + '-insearch" class="w3-small w3-tag w3-center w3-round todocounterspan ' + todoCounterStateColor + '"></span></button>' + todoPriority + '<span class="w3-small w3-right todostateselectorspan"><i class="fa fa-clock-o"></i>' + workedTime + ' ' + currTodoStateSelector + '</span><div id="todo-' + d._id + '-insearch" class="w3-container w3-hide">' + md.render(d._todoDesc) + '</div></li>';
 
           });
@@ -1047,23 +1181,23 @@
         if (currTodoId > 0) {
 
           w3.addClass('#todoli-' + currTodoId + '-inall', 'active');
-          
+
           if ( document.getElementsByClassName("todoli-" + currTodoId + '-processing') !== null ) {
             w3.addClass('#todoli-' + currTodoId + '-processing', 'active');
           }
-          
+
           if ( document.getElementsByClassName("todoli-" + currTodoId + '-testing') !== null ) {
             w3.addClass('#todoli-' + currTodoId + '-testing', 'active');
           }
-          
+
           if ( document.getElementsByClassName("todoli-" + currTodoId + '-idle') !== null ) {
             w3.addClass('#todoli-' + currTodoId + '-idle', 'active');
           }
-          
+
           if ( document.getElementsByClassName("todoli-" + currTodoId + '-finished') !== null ) {
             w3.addClass('#todoli-' + currTodoId + '-finished', 'active');
           }
-          
+
           if ( document.getElementsByClassName("todoli-" + currTodoId + '-insearch') !== null ) {
             w3.addClass('#todoli-' + currTodoId + '-insearch', 'active');
           }
@@ -1105,9 +1239,9 @@
       }
 
       let settedReminders = [];
-      
+
       function checkReminders() {
-        
+
         settedReminders.forEach( (r, i) => {
 
           if (Date.now() >= r.time) {
@@ -1157,7 +1291,7 @@
               if (r.type === 'Periodic') {
                 document.getElementById('reminderTimeP').innerHTML += ' (' + r.period + ' minutes) '
               }
-              
+
               w3.show('#reminderModal');
 
             }
@@ -1211,7 +1345,7 @@
                   settedReminderObj = { id: r.id, time: nextReminderTime, text: r.text, type: r.type, period: r.period, alert: r.alert, modal: r.modal, focus: r.focus, todos: r.todos }
                   settedReminders.push(settedReminderObj);
                   break;
-                
+
                 default:
                   // error
                   nextReminderTime = 0;

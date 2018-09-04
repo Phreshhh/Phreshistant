@@ -75,6 +75,18 @@ Don't need internet connection or extrernal accounts.
 **You can pick up todos for all types of reminders. On trigger the choosed todos (re)set to "Idle" state.**
 
 
+## Upgrade 1.1.1 Features
+
+- Settings added: Toggle show clock
+- Settings added: Reload app
+- Themes added: Purple
+- Themes added: Hello Kitty (pink)
+- Project- Todo list worktime is now divided to hours only (the old style is still divided to days and years, now it shows in popup on the worktime hover)
+- Project- Todo list state menu added: 'Workprice'
+  (The value of the todo(s) price per hour. Add it to the project for set global price to all todos and/or add to a todo for overwrite/add price just for the task.)
+- Markdown links (links in todo notes text) opens in your default browser from now on. (This is only valid for the new links, if you want to use the old links, please recreate them in your todo notes.)
+
+
 ## Screenshots
 
 ![App menu (dark theme)](https://github.com/Phreshhh/Phreshistant/blob/master/build/screenshots/menu.jpg)
@@ -91,6 +103,7 @@ Licensed under the [MIT](https://github.com/Phreshhh/Phreshistant/blob/master/LI
 
 
 ## Builds
+[Phreshistant v1.1.1](https://github.com/Phreshhh/Phreshistant/releases/tag/v1.1.1)
 [Phreshistant v1.0.0](https://github.com/Phreshhh/Phreshistant/releases/tag/v1.0.0)
 
 
