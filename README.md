@@ -104,6 +104,8 @@ Licensed under the [MIT](https://github.com/Phreshhh/Phreshistant/blob/master/LI
 
 
 ## Builds
+[Phreshistant v1.1.1.0](https://github.com/Phreshhh/Phreshistant/releases/tag/v1.1.1.0)
+
 [Phreshistant v1.1.1](https://github.com/Phreshhh/Phreshistant/releases/tag/v1.1.1)
 
 [Phreshistant v1.0.0](https://github.com/Phreshhh/Phreshistant/releases/tag/v1.0.0)
