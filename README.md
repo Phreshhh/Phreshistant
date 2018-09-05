@@ -81,6 +81,7 @@ Don't need internet connection or extrernal accounts.
 - Settings added: Reload app
 - Themes added: Purple
 - Themes added: Hello Kitty (pink)
+- Themes added: Ubuntu glass
 - Project- Todo list worktime is now divided to hours only (the old style is still divided to days and years, now it shows in popup on the worktime hover)
 - Project- Todo list state menu added: 'Workprice'
   (The value of the todo(s) price per hour. Add it to the project for set global price to all todos and/or add to a todo for overwrite/add price just for the task.)

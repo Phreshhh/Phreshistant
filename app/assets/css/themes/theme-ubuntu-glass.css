@@ -1,0 +1,63 @@
+:root {
+  --appcolor: rgba(0,0,0, 0.4);
+  --apphighlight: rgba(0,0,0, 0.7);
+}
+
+html {background-image: linear-gradient(to top right, darkorange, purple);}
+
+.fa {background-color:transparent;}
+
+.w3-button-app:hover {background-color:var(--appcolor) !important;}
+.w3-button-highlight:hover {background-color:var(--apphighlight) !important;color:var(--appcolor) !important;}
+.w3-button-transparent:hover {background-color:transparent !important;}
+.w3-dropdown-app-hover:hover > .w3-button-app:first-child,.w3-dropdown-click:hover > .w3-button:first-child {background-color:#49464e;color:#fff;}
+
+.active {background-color:var(--appcolor);color:white;}
+.highlight {background-color:var(--apphighlight);color:white;}
+
+#mainNav, #collapsedNav {background:#49464e;color:#fff;}
+#mainNav .w3-button-app,
+#mainNav .w3-button-highlight,
+#mainNav .w3-dropdown-app .w3-button-app,
+#collapsedNav .w3-button-app,
+#collapsedNav .w3-button-highlight,
+#collapsedNav .w3-dropdown-app .w3-button-app
+{background:#49464e;color:#fff;}
+
+#projectLoader, #todoLoader {color:var(--appcolor);}
+#projectView {border-right: 2px solid var(--apphighlight);background:rgba(0,0,0, 0.2);}
+#projectList li:hover {background:var(--apphighlight) !important;}
+#projectList > li:hover > .fa-bolt {color:#fff !important;}
+
+#todoView {background:rgba(0,0,0, 0.3);}
+#todoAllList li:hover, #todoAllList li button:hover,
+#todoProcessingList li:hover, #todoProcessingList li button:hover,
+#todoTestingList li:hover, #todoTestingList li button:hover,
+#todoIdleList li:hover, #todoIdleList li button:hover
+#TodoFinished li:hover, #TodoFinished li button:hover
+{background:var(--apphighlight) !important;}
+#todoAllList li:hover > .todoshowhidedescbutton, #todoAllList li button:hover > .todoshowhidedescbutton,
+#todoProcessingList li:hover > .todoshowhidedescbutton, #todoProcessingList li button:hover > .todoshowhidedescbutton,
+#todoTestingList li:hover > .todoshowhidedescbutton, #todoTestingList li button:hover > .todoshowhidedescbutton,
+#todoIdleList li:hover > .todoshowhidedescbutton, #todoIdleList li button:hover > .todoshowhidedescbutton
+#TodoFinished li:hover > .todoshowhidedescbutton, #TodoFinished li button:hover > .todoshowhidedescbutton
+{background:transparent !important;}
+
+#todoView .w3-bar .tablink {opacity: 0.7}
+
+.todocounterspan {color:#fff!important;}
+
+.w3-modal-content {background:transparent;}
+.modalinputfield {box-shadow:5px 5px 50px;}
+
+#editorNav .w3-button {background:var(--apphighlight);color:var(--appcolor);}
+#editorNav .w3-button:hover {background:var(--appcolor) !important;color:var(--apphighlight) !important;}
+
+/* markdown rendered elems */
+.w3-ul li ul li, .w3-ul li ol li {border:none;}
+.w3-ul li blockquote {background:lightgray;border-left:5px solid gray;margin:0px;padding: 5px 5px 5px 10px;}
+.w3-ul li:hover blockquote {background:#fdf5e6;border-left:5px solid var(--appcolor);}
+.w3-ul li table {border-collapse: collapse;}
+.w3-ul li table tr th, .w3-ul li table tr td {border:1px solid black;padding:5px;}
+.w3-ul li pre {background:var(--apphighlight);color:#fff;padding:5px;border-radius:5px;}
+.w3-ul li:hover pre {background:#fff;color:#000;}
