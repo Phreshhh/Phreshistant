@@ -74,6 +74,11 @@ Don't need internet connection or extrernal accounts.
 
 **You can pick up todos for all types of reminders. On trigger the choosed todos (re)set to "Idle" state.**
 
+## Upgrade 1.1.2 Features
+
+- Todo note editor toolbar position fixed on scroll also
+- Views height resize on maximize and restore also
+- Electron version upgrade to 4.0
 
 ## Upgrade 1.1.1 Features
 

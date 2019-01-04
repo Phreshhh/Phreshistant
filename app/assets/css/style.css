@@ -22,3 +22,5 @@ hr {margin:2px;padding:0;}
 .todostateselectorspan {position:absolute;top:8px;right:110px;}
 
 .modalinputfield {width:80%;margin:0 auto;}
+
+#editorNav {position:sticky;}

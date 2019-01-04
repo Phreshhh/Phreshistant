@@ -196,7 +196,7 @@
     <div id="editTodoNoteModal" class="w3-modal">
       <div class="w3-modal-content w3-animate-top" style="max-height:90%;overflow-y:auto;">
 
-        <div id="editorNav" class="w3-bar" style="padding-left:140px;">
+        <div id="editorNav" class="w3-bar">
           <a id="e-b" href="#" class="w3-bar-item w3-button" onclick="todosJS.editorMakeText('bold');" title="Bold"><i class="fa fa-bold"></i></a>
           <a id="e-i" href="#" class="w3-bar-item w3-button" onclick="todosJS.editorMakeText('italic');" title="Italic"><i class="fa fa-italic"></i></a>
           <a id="e-h" href="#" class="w3-bar-item w3-button" onclick="todosJS.editorMakeText('header');" title="Header"><i class="fa fa-header"></i></a>
@@ -700,6 +700,15 @@
       todoView.style.marginTop = mainNavHeight + "px";
 
       currentWindow.on('resize', function () {
+        setViewsHeight();
+      });
+      currentWindow.on('maximize', function () {
+        setTimeout( () => {
+          setViewsHeight();
+        }, 500);
+      });
+      
+      function setViewsHeight() {
         wh = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
         mainNavHeight = document.getElementById('mainNav').offsetHeight;
         cfh = wh - mainNavHeight;
@@ -707,7 +716,7 @@
         projectView.style.marginTop = mainNavHeight + "px";
         todoView.style.height = cfh + "px";
         todoView.style.marginTop = mainNavHeight + "px";
-      });
+      }
 
       let AutoLaunch = require('auto-launch');
       let PhreshistantAutoLauncher = new AutoLaunch({
