@@ -163,6 +163,6 @@ npm run dist
 
 ### Support
 
-If you like my work(s), please buy me a coffee or support/donate me. Contributions, issues(problems, ideas) and donates[donates](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=L3HSBGM4JTKEL&source=url) are welcome.
+If you like my work(s), please buy me a coffee or support/donate me. Contributions, issues(problems, ideas) and [donates](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=L3HSBGM4JTKEL&source=url) are welcome.
 
 Thank you, Have a nice day!
