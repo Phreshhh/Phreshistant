@@ -5,7 +5,7 @@
   "description": "Simple todo and project manage application.",
   "author": "Phresh",
   "copyright": "© 2018, Krisztián Kis - Phresh-IT",
-  "homepage": "http://phresh-it.hu/apps/phreshplayer/",
+  "homepage": "https://phresh-it.hu/apps/phreshistant/",
   "repository": "https://github.com/Phreshhh/Phreshistant/",
   "license": "MIT",
   "keywords": [
@@ -50,7 +50,7 @@
     "asar": true,
     "linux": {
       "icon": "build/icons/",
-      "maintainer": "Krisztian Kis <thatismyspecial@gmail.com>",
+      "maintainer": "Krisztian Kis",
       "synopsis": "Project & todo manager.",
       "category": "Development",
       "packageCategory": "devel",
@@ -61,7 +61,7 @@
     },
     "win": {
       "icon": "build/icons/phreshistant-icon.png.ico",
-      "publisherName": "Krisztian Kis <thatismyspecial@gmail.com>",
+      "publisherName": "Krisztian Kis",
       "target": [
         "nsis"
       ]

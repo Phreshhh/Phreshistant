@@ -5,7 +5,7 @@ Organize your ideas, projects, tasks, notes.
 
 - Nice, clean, oreview design.
 - Privacy focus.
-- From the idea to lunch. (project states)
+- From the idea to launch. (project states)
 - Track your work time each todos and all of project.
 - Get to-dos out of your head and more focus to the present. Free your mind!
 
@@ -118,9 +118,9 @@ Licensed under the [MIT](https://github.com/Phreshhh/Phreshistant/blob/master/LI
 
 ## Web
 
-[Phresh-IT](http://phresh-it.hu/)
+[Phresh-IT](https://phresh-it.hu/)
 
-[Phreshistant](http://phresh-it.hu/apps/phreshistant/)
+[Phreshistant](https://phresh-it.hu/apps/phreshistant/)
 
 
 ## Dev
@@ -160,3 +160,9 @@ npm run pack-mac
 ```
 npm run dist
 ```
+
+### Support
+
+If you like my work(s), please buy me a coffee or support/donate me. Contributions, issues(problems, ideas) and donates[donates](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=L3HSBGM4JTKEL&source=url) are welcome.
+
+Thank you, Have a nice day!
